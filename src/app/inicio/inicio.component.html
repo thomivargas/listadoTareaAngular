@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="header">
+    <h1>Gestionar Tareas</h1>
+    <p>gestiona tus tareas completas e incompletas</p>
+    <!-- mostrar un filtrar tareas completas e incompletas -->
+  </div>
+
+  <form (submit)="agregarTarea(tareaNueva.value, $event)" #myForm>
+    <div class="campo">
+      <input type="text" placeholder="Escribir nueva tarea" name="tareaNueva" #tareaNueva required>
+    </div>
+    <button type="submit">Agregar</button>
+  </form>
+
+  <div class="contenedor-tareas">
+
+    <div class="estado">
+      <h2>Tareas Completadas</h2>
+      <div class="listado" *ngFor="let tarea of getTareasCompletadas()">
+        <h1>Tarea n: {{ tarea.id }}</h1>
+        <div class="lista">
+          <input type="checkbox" name="estado" [(ngModel)]="tarea.estado">
+          <ul>
+            <li>{{ tarea.nombre }}</li>
+          </ul>
+          <button (click)="editarTarea(tarea)">Editar</button>
+          <button (click)="borrarTarea(tarea.id)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="estado">
+      <h2>Tareas No Completadas</h2>
+      <div class="listado" *ngFor="let tarea of getTareasNoCompletadas()">
+        <h1>Tarea n: {{ tarea.id }}</h1>
+        <div class="lista">
+          <input type="checkbox" name="estado" [(ngModel)]="tarea.estado" required>
+          <ul>
+            <li>{{ tarea.nombre }}</li>
+          </ul>
+          <button (click)="editarTarea(tarea)">Editar</button>
+          <button (click)="borrarTarea(tarea.id)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
