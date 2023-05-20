@@ -31,9 +31,7 @@ export class InicioComponent {
   }
 
   editarTarea(tarea: Tarea) {
-    // Implement your logic here to handle editing the task
-    // You can access the task properties like tarea.id and tarea.nombre
-    // For example, you could display a prompt or open a modal for editing the task
+
     const nuevoNombre = prompt('Ingrese el nuevo nombre de la tarea:', tarea.nombre);
     if (nuevoNombre !== null && nuevoNombre.trim() !== '') {
       tarea.nombre = nuevoNombre.trim();
